@@ -15,7 +15,7 @@ function Stats() {
       </div>
 
       {/* Stats grid */}
-      <div className="grid md:grid-cols-3 gap-8">
+      <div className="grid md:grid-cols-3 gap-4">
         {[
           {
             label: '制造业软件',
@@ -42,8 +42,29 @@ function Stats() {
             company: 'PYCAD'
           }
         ].map((item, i) => (
-          <div key={i} className="p-4 rounded-xl bg-mauve-900 w-2xs h-56">
-
+          <div key={i} className="p-4 rounded-xl bg-mauve-900 text-white">
+            <div className="flex justify-between items-start mb-12">
+              <div className="w-10 h-10 border border-white/20 rounded flex items-center justify-center">
+                <Target size={20} />
+              </div>
+              <span className="font-bold font-bpmf">{item.label}</span>
+            </div>
+            <div className="flex items-baseline gap-4 mb-8">
+              <span className="text-6xl font-bold">{item.stat}</span>
+              <span className="topacity-75 max-w-24 leading-tight">{item.unit}</span>
+            </div>
+            <p className="opacity-50 leading-relaxed mb-12">
+              {item.text}
+            </p>
+            <div className="flex items-center gap-4">
+              <div className="w-10 h-10 rounded-full bg-white/10 overflow-hidden">
+                <img src={`https://picsum.photos/seed/${i + 10}/100/100`} alt={item.author} referrerPolicy="no-referrer" />
+              </div>
+              <div>
+                <div className="font-bpmf">{item.author}</div>
+                <div className="font-nunito opacity-40">{item.company}</div>
+              </div>
+            </div>
           </div>
         ))}
       </div>
