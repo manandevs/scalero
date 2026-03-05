@@ -1,18 +1,18 @@
 "use client";
 import React, { useState, useEffect } from 'react';
-import { 
-  ChevronRight, 
-  ArrowRight, 
-  Calendar, 
-  CheckCircle2, 
-  BarChart3, 
-  Zap, 
-  Users, 
-  Database, 
-  MessageSquare, 
-  Target, 
-  RefreshCw, 
-  ChevronDown, 
+import {
+  ChevronRight,
+  ArrowRight,
+  Calendar,
+  CheckCircle2,
+  BarChart3,
+  Zap,
+  Users,
+  Database,
+  MessageSquare,
+  Target,
+  RefreshCw,
+  ChevronDown,
   ChevronUp,
   Linkedin,
   Twitter,
@@ -24,168 +24,10 @@ import {
   Layers
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-
-// --- Components ---
-
-const Navbar = () => (
-  <nav className="flex items-center justify-between px-6 py-4 max-w-7xl mx-auto w-full">
-    <div className="flex items-center gap-2">
-      <div className="w-8 h-8 bg-brand-dark rounded-lg flex items-center justify-center">
-        <div className="w-4 h-4 border-2 border-white rotate-45" />
-      </div>
-      <span className="text-xl font-bold tracking-tighter">throxy</span>
-    </div>
-    <div className="hidden md:flex items-center gap-8 text-sm font-medium">
-      <div className="group relative cursor-pointer">
-        <div className="flex items-center gap-1">Solutions <ChevronDown size={14} /></div>
-      </div>
-      <a href="#" className="hover:opacity-70 transition-opacity">About Us</a>
-      <div className="group relative cursor-pointer">
-        <div className="flex items-center gap-1">Resources <ChevronDown size={14} /></div>
-      </div>
-      <button className="bg-brand-dark text-white px-5 py-2 rounded-full text-xs font-semibold hover:bg-opacity-90 transition-all">
-        Strategy Call
-      </button>
-    </div>
-  </nav>
-);
-
-const Hero = () => (
-  <section className="px-6 py-16 md:py-24 max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-    <motion.div 
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6 }}
-    >
-      <div className="flex items-center gap-2 mb-6">
-        <span className="bg-orange-100 text-orange-700 text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider">Backed by Y-Combinator</span>
-      </div>
-      <h1 className="text-5xl md:text-7xl font-bold leading-[1.05] tracking-tight mb-8">
-        Bespoke sales systems, now with human cold calling.
-      </h1>
-      <p className="text-lg text-black/60 max-w-md mb-10 leading-relaxed">
-        We run your entire outbound using our own custom-built tech that uncovers niche-specific data, delivers unique messaging at scale, and keeps your emails landing in inboxes.
-      </p>
-      <button className="group bg-brand-purple text-white px-8 py-4 rounded-xl flex items-center gap-3 font-semibold hover:shadow-lg hover:shadow-brand-purple/20 transition-all">
-        <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-        Apply for a Strategy Call
-      </button>
-    </motion.div>
-
-    <motion.div 
-      initial={{ opacity: 0, scale: 0.95 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.8, delay: 0.2 }}
-      className="bg-white rounded-2xl shadow-2xl shadow-black/5 border border-black/5 overflow-hidden"
-    >
-      <div className="p-6 border-b border-black/5 flex justify-between items-center bg-gray-50/50">
-        <div className="flex gap-4 text-xs font-semibold uppercase tracking-widest opacity-40">
-          <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span>
-        </div>
-      </div>
-      <div className="grid grid-cols-6 gap-px bg-black/5">
-        {Array.from({ length: 24 }).map((_, i) => {
-          const isBooked = [3, 8, 14, 19, 22].includes(i);
-          const isGreen = [3, 19].includes(i);
-          return (
-            <div key={i} className="bg-white h-32 p-3 relative group transition-colors hover:bg-gray-50">
-              <span className="text-xs font-medium opacity-30">{i + 1}</span>
-              {isBooked && (
-                <div className={`mt-2 p-2 rounded-lg ${isGreen ? 'bg-green-100 text-green-800' : 'bg-brand-purple/10 text-brand-purple'} text-[10px] font-bold leading-tight`}>
-                  <div className="opacity-60 uppercase tracking-tighter mb-0.5">Booked Call</div>
-                  <div className="uppercase tracking-widest text-[8px]">Sales Opportunity</div>
-                </div>
-              )}
-            </div>
-          );
-        })}
-      </div>
-    </motion.div>
-  </section>
-);
-
-const TrustBar = () => (
-  <section className="border-y border-black/5 bg-white/50 py-10">
-    <div className="max-w-7xl mx-auto px-6 flex flex-wrap items-center justify-between gap-8 grayscale opacity-50">
-      <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-black/40">Trusted by global sales teams</span>
-      <div className="flex items-center gap-12 flex-wrap">
-        <span className="text-2xl font-bold tracking-tighter">aion</span>
-        <span className="text-xl font-bold">Johnson <span className="font-light">Controls</span></span>
-        <span className="text-xl font-bold italic">SANTILLANA</span>
-        <span className="text-xl font-medium flex items-center gap-1"><div className="w-3 h-3 rounded-full border-2 border-current" /> Sybilion</span>
-        <span className="text-xl font-bold flex items-center gap-1"><div className="w-4 h-4 bg-current rounded-sm" /> openinfo</span>
-      </div>
-    </div>
-  </section>
-);
-
-const StatsSection = () => (
-  <section className="bg-brand-dark text-white py-24 px-6">
-    <div className="max-w-7xl mx-auto">
-      <div className="flex items-center gap-3 mb-8 opacity-50">
-        <div className="w-8 h-[1px] bg-white" />
-        <span className="text-[10px] font-bold uppercase tracking-widest">Testimonials</span>
-      </div>
-      <h2 className="text-4xl md:text-5xl font-bold mb-20 max-w-2xl leading-tight">
-        Trusted by teams selling into traditional industries.
-      </h2>
-
-      <div className="grid md:grid-cols-3 gap-8">
-        {[
-          {
-            label: 'Manufacturing Software',
-            stat: '0',
-            unit: 'MEETINGS BOOKED PER WEEK',
-            text: "The manufacturing industry is one of the toughest markets to crack — it's complex, relationship-driven, and full of noise. That's why we partnered with Throxy. They're more than just a tool; they act as a true outbound partner.",
-            author: 'NIKLAS GERLACH, CCO',
-            company: 'INNOO'
-          },
-          {
-            label: 'Education Solutions',
-            stat: '3%',
-            unit: 'POSITIVE REPLY RATE',
-            text: "Throxy's personalised outbound put the right message in front of every educator at the perfect moment. We unlocked more qualified opportunities and gained precious time to focus on what matters the most, our customers.",
-            author: 'FRANCISCO ORTIZ, BUSINESS DEVELOPMENT',
-            company: 'SANTILLANA'
-          },
-          {
-            label: 'Medical Solutions',
-            stat: '0',
-            unit: 'HOURS BACK PER WEEK',
-            text: "Throxy runs all the outreach so I can stay heads-down on coding. After just eight highly targeted calls we're about to sign our first deal—already covering the entire campaign cost. As we keep tightening the ICP and offer, I'm confident the pipeline will only grow.",
-            author: 'NOUR ISLAM MOKHTARI, FOUNDER',
-            company: 'PYCAD'
-          }
-        ].map((item, i) => (
-          <div key={i} className="border border-white/10 p-8 rounded-2xl bg-white/5 hover:bg-white/[0.08] transition-colors">
-            <div className="flex justify-between items-start mb-12">
-              <div className="w-10 h-10 border border-white/20 rounded flex items-center justify-center">
-                <Target size={20} className="opacity-40" />
-              </div>
-              <span className="text-[10px] font-bold uppercase tracking-widest opacity-40">{item.label}</span>
-            </div>
-            <div className="flex items-baseline gap-4 mb-8">
-              <span className="text-6xl font-bold">{item.stat}</span>
-              <span className="text-[10px] font-bold uppercase tracking-widest opacity-40 max-w-[100px] leading-tight">{item.unit}</span>
-            </div>
-            <p className="text-sm opacity-60 leading-relaxed mb-12">
-              {item.text}
-            </p>
-            <div className="flex items-center gap-4">
-              <div className="w-10 h-10 rounded-full bg-white/10 overflow-hidden">
-                <img src={`https://picsum.photos/seed/${i + 10}/100/100`} alt={item.author} referrerPolicy="no-referrer" />
-              </div>
-              <div>
-                <div className="text-[10px] font-bold uppercase tracking-widest">{item.author}</div>
-                <div className="text-[10px] font-bold uppercase tracking-widest opacity-40">{item.company}</div>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-);
+import Header from '@/components/Header';
+import Hero from '@/components/Hero';
+import { TrustBar } from '@/components/TrustBar';
+import Stats from '@/components/Stats';
 
 const ComparisonSection = () => (
   <section className="bg-brand-dark text-white py-24 px-6 border-t border-white/5">
@@ -193,7 +35,7 @@ const ComparisonSection = () => (
       <h2 className="text-5xl md:text-6xl font-bold mb-20">
         Most tools overwhelm.<br />Most agencies disappoint.
       </h2>
-      
+
       <div className="grid md:grid-cols-3 gap-8">
         <div className="border border-white/10 rounded-2xl p-8 bg-white/5">
           <div className="h-48 mb-8 relative flex items-end justify-center">
@@ -285,7 +127,7 @@ const TechSection = () => (
         <h2 className="text-4xl md:text-5xl font-bold mb-12 leading-tight">
           The outbound partner with custom-built tech & managed execution
         </h2>
-        
+
         <div className="space-y-6 mb-12">
           <div className="bg-white p-6 rounded-2xl border border-black/5 shadow-sm">
             <h3 className="font-bold mb-2">We built our own outbound tech</h3>
@@ -368,8 +210,8 @@ const LeadListSection = () => {
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-wrap gap-8 mb-12 border-b border-black/5 pb-4">
           {tabs.map(tab => (
-            <button 
-              key={tab} 
+            <button
+              key={tab}
               onClick={() => setActiveTab(tab)}
               className={`text-[10px] font-bold uppercase tracking-widest pb-4 relative transition-all ${activeTab === tab ? 'text-brand-dark' : 'text-black/30 hover:text-black/60'}`}
             >
@@ -494,10 +336,10 @@ const PromiseSection = () => (
       <h2 className="text-5xl font-bold">Our Promise</h2>
       <div className="space-y-8 text-sm opacity-70 leading-relaxed">
         <p>
-          We started throxy with a clear belief: outbound sales is broken, and AI will redefine how companies connect with their customers.
+          We started 斯凯勒罗 with a clear belief: outbound sales is broken, and AI will redefine how companies connect with their customers.
         </p>
         <p>
-          Throxy exists to solve this problem. We won't be just another sales platform, we're your outbound growth partner, combining proprietary technology, rich data intelligence, and human expertise to connect you with perfect-fit prospects others simply can't reach.
+          斯凯勒罗 exists to solve this problem. We won't be just another sales platform, we're your outbound growth partner, combining proprietary technology, rich data intelligence, and human expertise to connect you with perfect-fit prospects others simply can't reach.
         </p>
         <p>
           Our promise is simple: we deliver qualified meetings with decision-makers in hard-to-reach, lucrative industries. No dashboards to manage. No systems to learn. No resources to hire. Just a steady, predictable flow of high-value conversations that convert.
@@ -506,7 +348,7 @@ const PromiseSection = () => (
           We take the entire prospecting burden off your plate, finding targets, crafting personalized outreach, managing replies, and booking meetings. So your team can focus exclusively on closing deals. And the longer we work together, the more our system learns and optimizes for your specific business.
         </p>
         <p>
-          With throxy, outbound sales becomes what it should be: predictable, profitable, and painless.
+          With 斯凯勒罗, outbound sales becomes what it should be: predictable, profitable, and painless.
         </p>
       </div>
     </div>
@@ -530,7 +372,7 @@ const FAQSection = () => {
       <div className="border-t border-black/5">
         {faqs.map((faq, i) => (
           <div key={i} className="border-b border-black/5">
-            <button 
+            <button
               onClick={() => setOpenIndex(openIndex === i ? null : i)}
               className="w-full py-8 flex justify-between items-center text-left group"
             >
@@ -539,7 +381,7 @@ const FAQSection = () => {
             </button>
             <AnimatePresence>
               {openIndex === i && (
-                <motion.div 
+                <motion.div
                   initial={{ height: 0, opacity: 0 }}
                   animate={{ height: 'auto', opacity: 1 }}
                   exit={{ height: 0, opacity: 0 }}
@@ -567,7 +409,7 @@ const Footer = () => (
             <div className="w-8 h-8 bg-white rounded-lg flex items-center justify-center">
               <div className="w-4 h-4 border-2 border-brand-dark rotate-45" />
             </div>
-            <span className="text-xl font-bold tracking-tighter">throxy</span>
+            <span className="text-xl font-bold tracking-tighter">斯凯勒罗</span>
           </div>
         </div>
         <div>
@@ -598,10 +440,10 @@ const Footer = () => (
           </ul>
         </div>
       </div>
-      
+
       <div className="pt-12 border-t border-white/10 flex flex-wrap justify-between items-center gap-8">
         <div className="flex gap-8 text-[10px] font-bold uppercase tracking-widest opacity-40">
-          <span>© 2025 Throxy. All rights reserved.</span>
+          <span>© 2025 斯凯勒罗. All rights reserved.</span>
           <a href="#" className="hover:opacity-100 transition-opacity">Privacy Policy</a>
           <a href="#" className="hover:opacity-100 transition-opacity">Terms of Service</a>
           <a href="#" className="hover:opacity-100 transition-opacity">Cookie Settings</a>
@@ -624,7 +466,7 @@ const OutboundPartnerCard = () => (
           The outbound partner built for hard-to-crack markets. Powered by our own tech.
         </h2>
         <p className="opacity-60 mb-12 leading-relaxed">
-          Throxy is the only outbound partner combining proprietary outbound tech with fully managed execution. We're your unfair advantage in markets where outbound is hard, ignored, or broken.
+          斯凯勒罗 is the only outbound partner combining proprietary outbound tech with fully managed execution. We're your unfair advantage in markets where outbound is hard, ignored, or broken.
         </p>
         <button className="group bg-white text-brand-dark px-8 py-4 rounded-xl flex items-center gap-3 font-semibold hover:bg-opacity-90 transition-all w-fit">
           <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
@@ -634,7 +476,7 @@ const OutboundPartnerCard = () => (
       <div className="bg-brand-purple/20 p-16 flex flex-col justify-center gap-6 relative overflow-hidden">
         {/* Abstract background elements */}
         <div className="absolute top-0 right-0 w-64 h-64 bg-brand-purple/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-        
+
         <div className="bg-white p-6 rounded-2xl border border-black/5 shadow-lg flex items-center gap-4 relative z-10">
           <div className="w-10 h-10 rounded bg-brand-purple/10 flex items-center justify-center text-brand-purple">
             <Target size={20} />
@@ -662,11 +504,11 @@ const OutboundPartnerCard = () => (
 
 export default function App() {
   return (
-    <div className="min-h-screen selection:bg-brand-purple/20 selection:text-brand-purple">
-      <Navbar />
+    <>
       <Hero />
       <TrustBar />
-      <StatsSection />
+      <Stats />
+      {/*
       <ComparisonSection />
       <TechSection />
       <LeadListSection />
@@ -674,7 +516,7 @@ export default function App() {
       <OutboundPartnerCard />
       <PromiseSection />
       <FAQSection />
-      <Footer />
-    </div>
+      <Footer /> */}
+    </>
   );
 }
