@@ -8,7 +8,6 @@ import Strategy from '@/components/Strategy';
 import OutboundPartnerCard from '@/components/OutboundPartnerCard';
 import Promise from '@/components/Promise';
 import FAQ from '@/components/FAQ';
-import Footer from '@/components/Footer';
 
 export default function App() {
   return (
@@ -23,7 +22,6 @@ export default function App() {
       <OutboundPartnerCard />
       <Promise />
       <FAQ />
-      <Footer />
     </>
   );
 }
