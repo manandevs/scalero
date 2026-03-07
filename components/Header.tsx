@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { ChevronDown, TrendingUp, Phone, ShieldCheck, Crosshair, Server } from "lucide-react";
+import { ChevronDown, TrendingUp, Phone, ShieldCheck, Crosshair, Server, Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface DropdownItem {
@@ -68,33 +68,33 @@ const Dropdown: React.FC<DropdownProps> = ({ label, items, width, activeDropdown
 
 const Header = () => {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  // Updated 4-item 解决方案 dropdown
   const solutions: DropdownItem[] = [
     {
       title: "全托管服务",
-      desc: "我们为您搭建并管理整个外呼引擎，省心省力。",
+      desc: "我们为您搭建并管理整个应用增长引擎，省心省力。",
       icon: <TrendingUp size={14} />,
       color: "bg-purple-100 text-purple-700",
       url: "/solutions/full-managed-service",
     },
     {
-      title: "电话开发",
-      desc: "真实电话开发团队，高效联系潜在客户。",
+      title: "深度互动触达",
+      desc: "深度触达高净值用户，提升核心付费与忠诚度。",
       icon: <Phone size={14} />,
       color: "bg-red-100 text-red-700",
       url: "/solutions/phone-outreach",
     },
     {
-      title: "潜在客户查找",
-      desc: "智能生成精准潜在客户名单，提高转化率。",
+      title: "高潜用户洞察",
+      desc: "智能生成精准目标用户画像，提高买量ROI。",
       icon: <ShieldCheck size={14} />,
       color: "bg-blue-100 text-blue-700",
       url: "/solutions/lead-research",
     },
     {
-      title: "信息策略",
-      desc: "为决策者定制冷邮件和沟通方案。",
+      title: "智能营销策略",
+      desc: "为不同生命周期的用户定制唤醒与转化方案。",
       icon: <Crosshair size={14} />,
       color: "bg-green-100 text-green-700",
       url: "/solutions/messaging-strategy",
@@ -111,7 +111,7 @@ const Header = () => {
     },
     {
       title: "博客",
-      desc: "了解最新外呼与AI优化洞察。",
+      desc: "了解最新应用增长与AI营销洞察。",
       icon: <ShieldCheck size={14} />,
       color: "bg-teal-100 text-teal-700",
       url: "/blog",
@@ -121,15 +121,15 @@ const Header = () => {
   return (
     <nav className="relative z-50 flex items-center justify-between px-6 py-4 max-w-7xl mx-auto w-full">
       {/* Logo */}
-      <Link href="/" className="flex items-center gap-2">
+      <Link href="/" className="flex items-center gap-2 relative z-[60]">
         <svg width="20" height="20" viewBox="0 0 100 100">
           <rect x="25" y="25" width="50" height="50" fill="none" stroke="black" strokeWidth="6" transform="rotate(45 50 50)" />
         </svg>
         <span className="text-xl font-bold tracking-tighter font-bpmf">斯卡莱罗</span>
       </Link>
 
-      {/* Navigation */}
-      <div className="hidden md:flex items-center gap-8 font-medium">
+      {/* Desktop Navigation */}
+      <div className="hidden lg:flex items-center gap-8 font-medium">
         <Dropdown
           label="解决方案"
           items={solutions}
@@ -156,13 +156,88 @@ const Header = () => {
         <Link href="/book-call">
           <button className="flex h-fit w-fit items-center justify-center gap-2 rounded-full
             bg-gradient-to-r from-[#D32F2F] via-[#E53935] to-[#FF5252]
-            px-8 py-4 text-white shadow-[inset_0px_-4px_4px_0px_#FF7961,0px_0px_0px_2px_#FFCDD2,0px_4px_0px_0px_#B71C1C]
+            px-8 py-3 text-white shadow-[inset_0px_-4px_4px_0px_#FF7961,0px_0px_0px_2px_#FFCDD2,0px_4px_0px_0px_#B71C1C]
             transition-transform duration-250 hover:-translate-y-1 active:translate-y-1
-            active:shadow-[inset_0px_-4px_4px_0px_#FF7961,0px_0px_0px_2px_#FFCDD2] font-bpmf">
+            active:shadow-[inset_0px_-4px_4px_0px_#FF7961,0px_0px_0px_2px_#FFCDD2] font-bpmf text-sm">
             <span className="text-white">预约战略咨询</span>
           </button>
         </Link>
       </div>
+
+      {/* Mobile Menu Toggle Button */}
+      <button
+        className="lg:hidden p-2 text-black relative z-[60]"
+        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        aria-label="Toggle Menu"
+      >
+        {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+      </button>
+
+      {/* Mobile Navigation Dropdown */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "100vh" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3 }}
+            className="absolute top-0 left-0 w-full bg-white shadow-xl z-50 lg:hidden flex flex-col pt-20 pb-6 px-6 overflow-y-auto"
+          >
+            <div className="flex flex-col gap-6 font-bpmf">
+
+              <div className="space-y-4">
+                <div className="font-bold text-gray-400 text-xs uppercase tracking-widest border-b border-gray-100 pb-2">解决方案</div>
+                {solutions.map((item, idx) => (
+                  <Link
+                    key={idx}
+                    href={item.url}
+                    className="flex items-center gap-3 text-lg font-semibold hover:text-brand-purple"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    <div className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 ${item.color}`}>
+                      {item.icon}
+                    </div>
+                    {item.title}
+                  </Link>
+                ))}
+              </div>
+
+              <div className="space-y-4 mt-2">
+                <div className="font-bold text-gray-400 text-xs uppercase tracking-widest border-b border-gray-100 pb-2">公司与资源</div>
+                <Link
+                  href="/about"
+                  className="block text-lg font-semibold hover:text-brand-purple"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  关于我们
+                </Link>
+                {resources.map((item, idx) => (
+                  <Link
+                    key={idx}
+                    href={item.url}
+                    className="block text-lg font-semibold hover:text-brand-purple"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {item.title}
+                  </Link>
+                ))}
+              </div>
+
+              <div className="mt-6 pt-6 border-t border-gray-100">
+                <Link href="/book-call" onClick={() => setIsMobileMenuOpen(false)}>
+                  <button className="flex w-full h-fit items-center justify-center gap-2 rounded-full
+                    bg-gradient-to-r from-[#D32F2F] via-[#E53935] to-[#FF5252]
+                    px-8 py-4 text-white shadow-[inset_0px_-4px_4px_0px_#FF7961,0px_0px_0px_2px_#FFCDD2,0px_4px_0px_0px_#B71C1C]
+                    font-bpmf text-base active:translate-y-1">
+                    <span className="text-white">预约战略咨询</span>
+                  </button>
+                </Link>
+              </div>
+
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 };

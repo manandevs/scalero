@@ -27,40 +27,39 @@ function LeadList() {
 
   const tabs = [
     "数据来源",
-    "信息策略",
-    "ICP 匹配",
-    "送达率管理",
-    "闭环优化",
+    "自动化营销",
+    "用户精准画像",
+    "多渠道触达管理",
+    "留存闭环优化",
     "全托管服务"
   ]
 
   return (
-    <section className="py-24 px-6 font-bpmf">
+    <section className="py-16 lg:py-24 px-6 font-bpmf">
       <div className="max-w-7xl mx-auto">
         {/* Title */}
-        <h2 className="text-5xl md:text-6xl font-bold mb-16 max-w-4xl">
+        <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-10 lg:mb-16 max-w-4xl leading-tight">
           构建真正精准的<br />
-          潜在客户数据库
+          核心活跃用户池
         </h2>
 
         {/* Tabs */}
-        <div className="flex flex-wrap gap-8 mb-12 border-b border-white/10 pb-2">
+        <div className="flex flex-wrap gap-4 sm:gap-6 lg:gap-8 mb-8 lg:mb-12 border-b border-white/10 pb-2 text-sm sm:text-base">
           {tabs.map((tab) => (
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
-              className={`font-bold uppercase tracking-widest pb-4 relative transition-all ${
-                activeTab === tab
+              className={`font-bold uppercase tracking-widest pb-2 lg:pb-4 relative transition-all whitespace-nowrap ${activeTab === tab
                   ? "text-black"
                   : "text-black/30 hover:text-black/70"
-              }`}
+                }`}
             >
               {tab}
 
               {activeTab === tab && (
                 <motion.div
                   layoutId="tab"
-                  className="absolute bottom-0 left-0 right-0 h-[2px] bg-white"
+                  className="absolute bottom-0 left-0 right-0 h-[2px] bg-black"
                 />
               )}
             </button>
@@ -68,57 +67,57 @@ function LeadList() {
         </div>
 
         {/* Card */}
-        <div className="bg-mauve-900 text-white rounded-3xl p-12 relative overflow-hidden border border-white/10">
-          <div className="grid md:grid-cols-2 gap-16 items-center">
+        <div className="bg-mauve-900 text-white rounded-3xl p-6 sm:p-8 lg:p-12 relative overflow-hidden border border-white/10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
             {/* Left Side */}
             <div>
-              <div className="flex items-center gap-3 opacity-60 mb-6">
-                <Database size={16}/>
+              <div className="flex items-center gap-3 opacity-60 mb-6 text-sm sm:text-base">
+                <Database size={16} />
                 <span className="uppercase tracking-widest">
                   自定义潜在客户数据库
                 </span>
               </div>
 
-              <h3 className="text-4xl font-bold mb-6 leading-tight">
-                构建符合 ICP 的<br />
-                精准客户列表
+              <h3 className="text-3xl sm:text-4xl font-bold mb-6 leading-tight">
+                构建高留存的<br />
+                精准用户矩阵
               </h3>
 
-              <p className="opacity-70 mb-10 leading-relaxed">
-                大多数销售工具依赖过时的数据供应商。
-                我们从零开始构建潜在客户数据库，
-                根据您的目标客户画像精准筛选，
-                帮助您找到真正有价值的客户。
+              <p className="opacity-70 mb-8 lg:mb-10 leading-relaxed text-sm sm:text-base">
+                大多数买量平台依赖粗放的标签匹配。
+                我们通过深度数据挖掘分析用户行为，
+                根据您的产品特性进行精准定位，
+                帮助您获取真正高价值的活跃用户。
               </p>
 
               {/* Stats */}
-              <div className="grid grid-cols-3 gap-6 mb-12">
+              <div className="grid grid-cols-3 gap-2 sm:gap-6 mb-8 lg:mb-12">
                 <div>
-                  <div className="text-3xl font-bold">10K+</div>
-                  <div className="opacity-50">
-                    潜在客户
+                  <div className="text-2xl sm:text-3xl lg:text-3xl font-bold">1M+</div>
+                  <div className="opacity-50 text-xs sm:text-sm mt-1">
+                    触达覆盖
                   </div>
                 </div>
 
                 <div>
-                  <div className="text-3xl font-bold">95%</div>
-                  <div className="opacity-50">
+                  <div className="text-2xl sm:text-3xl lg:text-3xl font-bold">95%</div>
+                  <div className="opacity-50 text-xs sm:text-sm mt-1">
                     数据准确率
                   </div>
                 </div>
 
                 <div>
-                  <div className="text-3xl font-bold">4×</div>
-                  <div className="opacity-50">
-                    回复率提升
+                  <div className="text-2xl sm:text-3xl lg:text-3xl font-bold">4×</div>
+                  <div className="opacity-50 text-xs sm:text-sm mt-1">
+                    留存率提升
                   </div>
                 </div>
               </div>
 
-              {/* CTA Button (same as header) */}
+              {/* CTA Button */}
               <button
                 className="
-                flex items-center gap-2 rounded-full
+                w-full sm:w-fit justify-center flex items-center gap-2 rounded-full
                 bg-gradient-to-r from-[#D32F2F] via-[#E53935] to-[#FF5252]
                 px-8 py-4 text-white
                 shadow-[inset_0px_-4px_4px_0px_#FF7961,0px_0px_0px_2px_#FFCDD2,0px_4px_0px_0px_#B71C1C]
@@ -127,23 +126,28 @@ function LeadList() {
                 "
               >
                 预约战略咨询
-                <ArrowRight size={18}/>
+                <ArrowRight size={18} />
               </button>
             </div>
 
             {/* Right Chart */}
-            <div className="relative">
-              <div className="h-64 bg-black/20 rounded-xl p-4 border border-white/10">
+            <div className="relative mt-6 lg:mt-0">
+              <div className="h-48 sm:h-64 bg-black/20 rounded-xl p-2 sm:p-4 border border-white/10">
                 <ResponsiveContainer width="100%" height="100%">
                   <BarChart data={data}>
                     <XAxis
                       dataKey="name"
                       stroke="#ffffff70"
-                      tick={{ fill: "#ffffff70", fontSize: 11 }}
+                      tick={{ fill: "#ffffff70", fontSize: 10 }}
+                      interval={0}
+                      angle={-30}
+                      textAnchor="end"
+                      height={50}
                     />
                     <YAxis
                       stroke="#ffffff70"
-                      tick={{ fill: "#ffffff70", fontSize: 11 }}
+                      tick={{ fill: "#ffffff70", fontSize: 10 }}
+                      width={30}
                     />
                     <Tooltip
                       contentStyle={{
@@ -155,7 +159,7 @@ function LeadList() {
                     />
                     <Bar
                       dataKey="value"
-                      radius={[4,4,0,0]}
+                      radius={[4, 4, 0, 0]}
                       fill="rgba(255,255,255,0.8)"
                     />
                   </BarChart>
@@ -163,30 +167,29 @@ function LeadList() {
               </div>
 
               {/* Floating cards */}
-              <div className="absolute -top-6 right-4 bg-white text-black px-4 py-2 rounded-lg shadow font-bold flex items-center gap-2">
-                <Sparkles size={14}/>
+              <div className="absolute -top-6 sm:-top-8 right-0 sm:right-4 bg-white text-black px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg shadow font-bold flex items-center gap-2 text-xs sm:text-base">
+                <Sparkles size={14} />
                 AI 数据分析
               </div>
 
-              <div className="absolute bottom-0 left-0 bg-white text-black px-4 py-2 rounded-lg shadow font-bold">
-                10,284 潜在客户
+              <div className="absolute bottom-8 sm:bottom-0 left-0 sm:left-4 bg-white text-black px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg shadow font-bold text-xs sm:text-base">
+                10,284 新增活跃用户
               </div>
             </div>
           </div>
 
           {/* Data Grid Background */}
-          <div className="absolute right-0 top-0 bottom-0 w-1/2 opacity-10 pointer-events-none">
+          <div className="absolute right-0 top-0 bottom-0 w-full sm:w-1/2 opacity-10 pointer-events-none hidden sm:block">
             <div className="p-12 space-y-2">
-              {Array.from({length:20}).map((_,i)=>(
+              {Array.from({ length: 20 }).map((_, i) => (
                 <div key={i} className="flex gap-1">
-                  {Array.from({length:12}).map((_,j)=>(
+                  {Array.from({ length: 12 }).map((_, j) => (
                     <div
                       key={j}
-                      className={`h-1 flex-1 rounded ${
-                        Math.random() > 0.8
+                      className={`h-1 flex-1 rounded ${Math.random() > 0.8
                           ? "bg-brand-purple"
                           : "bg-white/20"
-                      }`}
+                        }`}
                     />
                   ))}
                 </div>

@@ -9,35 +9,35 @@ function FAQ() {
   const faqs = [
     {
       q: "我需要自己设置任何东西吗？",
-      a: "不需要。我们负责从技术基础设施（域名、邮件服务）到潜在客户研究和消息撰写的一切工作。"
+      a: "不需要。我们负责从追踪埋点（SDK接入建议）到用户画像分析和营销策略落地的全套服务。"
     },
     {
       q: "你们会打冷电话吗？",
-      a: "会。我们将自动化外呼与人工电话开发结合，以在传统行业中最大化转化率。"
+      a: "我们会根据您的产品特性制定策略。对于高净值产品，我们会结合专属客服进行深度用户触达；对于大众产品，我们专注于自动化增长引擎。"
     },
     {
-      q: "我可以使用自己的CRM或销售工具吗？",
-      a: "当然可以。我们与所有主流CRM系统集成，确保高质量线索的顺畅交接。"
+      q: "我可以使用自己的CRM或数据工具吗？",
+      a: "当然可以。我们与所有主流数据分析平台（如 Mixpanel, Amplitude）无缝集成，确保数据的顺畅交接。"
     },
     {
-      q: "如果我在一个小众或传统行业怎么办？",
-      a: "这正是我们的专长。我们擅长那些常规工具无法覆盖的难啃市场。"
+      q: "如果我在一个小众或垂直赛道怎么办？",
+      a: "这正是我们的专长。我们擅长在极度细分的市场中找到您的精准受众，那些常规粗放式广告无法触达的用户。"
     },
     {
-      q: "多久能看到预约会议？",
-      a: "通常活动在第三周上线，首批会议会在活动开始后不久出现。"
+      q: "多久能看到用户增长效果？",
+      a: "通常活动在第二周上线，首批高活跃用户会在策略执行后迅速显现。"
     },
     {
-      q: "这和传统的线索代理机构有什么不同？",
-      a: "我们使用自主技术从零构建定制数据库，而不是购买过时的名单。此外，我们提供端到端的全程管理。"
+      q: "这和传统的买量投放公司有什么不同？",
+      a: "我们不仅关注前端下载，更专注于用户全生命周期的留存与转化，提供端到端的应用增长全托管方案。"
     }
   ]
 
   return (
-    <section className="py-24 px-6 max-w-7xl mx-auto font-bpmf">
-      <h2 className="text-5xl font-bold mb-16 text-center">常见问题</h2>
+    <section className="py-16 lg:py-24 px-6 max-w-7xl mx-auto font-bpmf">
+      <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-10 lg:mb-16 text-center">常见问题</h2>
 
-      <div className="grid gap-6">
+      <div className="grid gap-4 sm:gap-6">
         {faqs.map((faq, i) => (
           <div
             key={i}
@@ -45,13 +45,13 @@ function FAQ() {
           >
             <button
               onClick={() => setOpenIndex(openIndex === i ? null : i)}
-              className="w-full py-6 px-6 flex justify-between items-center text-left group hover:bg-gray-50 transition-colors"
+              className="w-full py-5 px-5 sm:py-6 sm:px-6 flex justify-between items-center text-left group hover:bg-gray-50 transition-colors"
             >
-              <span className="font-bold uppercase tracking-wider text-gray-900">
+              <span className="font-bold uppercase tracking-wider text-gray-900 text-sm sm:text-base pr-4">
                 {faq.q}
               </span>
-              <div className="bg-mauve-50  w-12 h-12 rounded-full flex justify-center items-center">
-                {openIndex === i ? <Minus size={24} strokeWidth={4} /> : <Plus size={24} strokeWidth={4} />}
+              <div className="bg-mauve-50 min-w-10 min-h-10 sm:w-12 sm:h-12 rounded-full flex justify-center items-center shrink-0">
+                {openIndex === i ? <Minus size={20} strokeWidth={4} /> : <Plus size={20} strokeWidth={4} />}
               </div>
             </button>
 
@@ -62,9 +62,9 @@ function FAQ() {
                   animate={{ height: "auto", opacity: 1 }}
                   exit={{ height: 0, opacity: 0 }}
                   transition={{ duration: 0.3 }}
-                  className="px-6 pb-6"
+                  className="px-5 sm:px-6 pb-5 sm:pb-6"
                 >
-                  <p className="text-gray-700 leading-relaxed">{faq.a}</p>
+                  <p className="text-gray-700 leading-relaxed text-sm sm:text-base">{faq.a}</p>
                 </motion.div>
               )}
             </AnimatePresence>

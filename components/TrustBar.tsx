@@ -23,17 +23,17 @@ const brandImages = [
 
 export const TrustBar = () => {
   return (
-    <section className="px-6 py-12 max-w-7xl mx-auto font-bpmf">
-      <div className="flex h-20 border border-gray-300">
+    <section className="px-6 py-8 lg:py-12 max-w-7xl mx-auto font-bpmf">
+      <div className="flex flex-col lg:flex-row h-auto lg:h-20 border border-gray-300">
         {/* Left label */}
-        <div className="flex items-center justify-start px-4 border-r border-gray-300">
-          <span className="font-bpmf text-black/70">
-            全球顶级销售团队信赖
+        <div className="flex items-center justify-center lg:justify-start px-4 py-3 lg:py-0 border-b lg:border-b-0 lg:border-r border-gray-300">
+          <span className="font-bpmf text-black/70 text-sm sm:text-base text-center lg:text-left">
+            全球顶级移动应用开发者信赖
           </span>
         </div>
 
         {/* Brand logos */}
-        <div className="flex-1 flex overflow-hidden">
+        <div className="flex-1 flex overflow-hidden h-16 lg:h-full">
           <motion.div
             className="flex"
             animate={{ x: ["0%", "-50%"] }}
@@ -44,7 +44,7 @@ export const TrustBar = () => {
             {brandImages.map((img, index) => (
               <div
                 key={index}
-                className="flex-shrink-0 w-48 h-full flex items-center justify-center px-4 border-l border-gray-300 bg-white"
+                className="flex-shrink-0 w-32 sm:w-48 h-full flex items-center justify-center px-4 border-l border-gray-300 bg-white"
               >
                 <div
                   className="w-full h-full bg-contain bg-center bg-no-repeat"
@@ -55,7 +55,7 @@ export const TrustBar = () => {
             {brandImages.map((img, index) => (
               <div
                 key={index}
-                className="flex-shrink-0 w-48 h-full flex items-center justify-center px-4 border-l border-gray-300 bg-white"
+                className="flex-shrink-0 w-32 sm:w-48 h-full flex items-center justify-center px-4 border-l border-gray-300 bg-white"
               >
                 <div
                   className="w-full h-full bg-contain bg-center bg-no-repeat"

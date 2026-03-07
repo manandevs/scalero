@@ -23,15 +23,15 @@ const sdrData = [
 
 function Comparison() {
   return (
-    <section className="px-6 py-24 max-w-7xl mx-auto font-bpmf">
+    <section className="px-6 py-16 lg:py-24 max-w-7xl mx-auto font-bpmf">
 
       {/* Title */}
-      <h2 className="text-5xl md:text-6xl font-bold mb-20 max-w-4xl">
-        大多数工具令人困惑。<br />
-        大多数代理机构令人失望。
+      <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-12 lg:mb-20 max-w-4xl leading-tight">
+        大多数增长工具难以打通。<br />
+        大多数买量渠道越来越贵。
       </h2>
 
-      <div className="grid md:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-4">
 
         {/* SDR Card */}
         <div className="p-6 rounded-xl bg-mauve-900 text-white">
@@ -72,13 +72,13 @@ function Comparison() {
 
               </BarChart>
             </ResponsiveContainer>
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white text-black px-3 py-1 rounded font-bold">
-              每天仅发送 25 封邮件
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white text-black px-3 py-1 rounded font-bold text-sm text-center w-max">
+              每天耗费大量时间测试素材
             </div>
           </div>
-          <p className="leading-relaxed opacity-80">
-            <span className="font-bold">销售开发代表（SDR）</span>
-            上手速度慢，并且需要持续管理和培训。
+          <p className="leading-relaxed opacity-80 text-sm sm:text-base">
+            <span className="font-bold">传统的买量与投放团队</span>
+            上手速度慢，并且需要持续的素材优化和数据监控。
           </p>
         </div>
 
@@ -89,7 +89,7 @@ function Comparison() {
           <div className="h-48 mb-8 flex flex-col justify-center gap-4">
 
             <div className="flex items-center gap-3 opacity-70">
-              <Clock size={14} /> 外呼工作耗时
+              <Clock size={14} /> 渠道打通耗时
             </div>
 
             <div className="space-y-3">
@@ -105,20 +105,20 @@ function Comparison() {
 
             </div>
 
-            <div className="flex gap-4 opacity-70">
+            <div className="flex flex-wrap gap-3 lg:gap-4 opacity-70 text-sm">
 
               <div className="flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-white" />
+                <div className="w-2 h-2 rounded-full bg-white shrink-0" />
                 测试
               </div>
 
               <div className="flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-white/30" />
+                <div className="w-2 h-2 rounded-full bg-white/30 shrink-0" />
                 调整配置
               </div>
 
               <div className="flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-red-400" />
+                <div className="w-2 h-2 rounded-full bg-red-400 shrink-0" />
                 修复问题
               </div>
 
@@ -126,10 +126,10 @@ function Comparison() {
 
           </div>
 
-          <p className="leading-relaxed opacity-80">
-            <span className="font-bold">销售工具</span>
-            往往需要不断测试、调整配置并修复问题，
-            才能勉强运行。
+          <p className="leading-relaxed opacity-80 text-sm sm:text-base">
+            <span className="font-bold">碎片化的增长工具</span>
+            往往需要不断的 API 对接、数据清洗和配置修复，
+            才能勉强协同运行。
           </p>
 
         </div>
@@ -146,33 +146,33 @@ function Comparison() {
                 <div className="w-2 h-2 rounded-full bg-white/40" />
                 <div className="w-2 h-2 rounded-full bg-white/40" />
               </div>
-              <div className="opacity-70">星期一</div>
+              <div className="opacity-70 text-sm">星期一</div>
             </div>
 
-            <div className="p-4 space-y-3">
+            <div className="p-4 space-y-3 text-sm lg:text-base">
 
               <div className="bg-red-500/30 border border-red-400 p-2 rounded-lg">
                 <div className="font-bold text-red-200">
-                  低质量潜在客户
+                  低质量虚假流量
                 </div>
-                <div className="opacity-70">9:00 - 9:30</div>
+                <div className="opacity-70 text-xs mt-1">9:00 - 9:30</div>
               </div>
 
               <div className="bg-white/10 border border-white/20 p-2 rounded-lg opacity-60">
                 <div className="font-bold">
-                  不符合条件的客户
+                  次日即流失的用户
                 </div>
-                <div>9:30 - 10:00</div>
+                <div className="text-xs mt-1">9:30 - 10:00</div>
               </div>
 
             </div>
 
           </div>
 
-          <p className="leading-relaxed opacity-80">
-            <span className="font-bold">代理机构</span>
-            虽然承诺高质量线索，
-            但往往交付的是低价值客户。
+          <p className="leading-relaxed opacity-80 text-sm sm:text-base">
+            <span className="font-bold">传统广告代理</span>
+            虽然承诺高曝光和下载量，
+            但往往交付的是留存极低的无效虚假用户。
           </p>
 
         </div>
